@@ -58,8 +58,8 @@ pub fn get_language(language_value: &HeaderValue) -> &str {
 pub fn get_path(path: &str, language: &str, language_properties: &LanguageProperties) -> String {
     let languages = language_properties.clone().languages;
 
-    for str in &languages {
-        println!("{}", str)
+    if path.contains("..") {
+        return format!("frontend/{}/err.html", language);
     }
 
     return match path {

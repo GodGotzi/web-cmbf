@@ -30,7 +30,7 @@ async fn index(req: HttpRequest) -> Result<NamedFile> {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| App::new().route("/{filename:.*}", web::get().to(index)))
         .workers(10)
-        .bind(("localhost", 3000))?
+        .bind(("192.168.1.185", 3000))?
         .run()
         .await
 }
