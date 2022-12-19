@@ -22,8 +22,19 @@ lazy_static! {
 async fn index(req: HttpRequest) -> Result<NamedFile> {
     log_request(&req);
 
-    let language_value = req.headers().get(ACCEPT_LANGUAGE).unwrap();
-    let language_str = get_language(language_value);
+    let language_str = match req.headers().get(ACCEPT_LANGUAGE) {
+        Some(header) => {
+            let mut language_split = get_language(header).split(";");
+            let language_str = language_split.next().unwrap();
+
+            language_str
+        },
+        None => {
+            log_info("Invalid Language", LogLevel::WARN);
+            "de"
+        } 
+    };
+
     let str: String = get_path(req.path(), language_str, &LANGUAGE_PROPERTIES);
 
     log_response(str.as_str());
@@ -36,8 +47,8 @@ async fn main() -> std::io::Result<()> {
     log_info("Waiting for Requests", LogLevel::INFO);
 
     HttpServer::new(|| App::new().route("/{filename:.*}", web::get().to(index)))
-        .workers(20)
-        .bind(("192.168.1.185", 3000))?
+        .workers(40)
+        .bind(("192.168.60.231", 3000))?
         .run()
         .await
 }
