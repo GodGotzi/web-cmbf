@@ -16,7 +16,7 @@ impl <'a> LanguageProperties<'a> {
             None => panic!("languages Value doesn't exist")
         };
 
-        let languages: Vec<&str> = language_str.split(";").collect();
+        let languages: Vec<&str> = language_str.split(",").collect();
 
         Self {
             filepath,
