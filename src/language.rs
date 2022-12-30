@@ -64,7 +64,7 @@ pub fn get_path(path: &str, language: &str, language_properties: &LanguageProper
 
     return match path {
         "/" => {
-            format!("frontend/{}/home.html", language)
+            format!("frontend/{}/news.html", language)
         },
         _ => {
             if Path::new(format!("frontend{}", path).as_str()).exists() {

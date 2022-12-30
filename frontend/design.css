@@ -3,10 +3,28 @@ body {
   background-image: url('pictures/old-black-background-grunge-texture-blackboard-chalkboard-concrete_40.jpg');
   background-size: cover;
   background-attachment: fixed;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.top-padding {
+  height: 15px;
+}
+
+.content-top {
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+
 .top {
-  height: 100px;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  white-space: nowrap;
 }
 
 .bottom {
@@ -15,14 +33,14 @@ body {
 
 .main-content {
   margin: auto;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
   background-image: url('pictures/sep09_1_20.jpg');
-  width: 80%;
-  height: 3000px;
+  width: 90%;
   object-fit: contain;
   border-radius: 25px 25px;
   box-shadow: 0 0 0 rgba(255, 255, 255, 1);
   transition: box-shadow 0.3s;
+  text-align: center;
 }                                                                                                       
 
 .main-content:hover {
@@ -31,10 +49,12 @@ body {
 
 .end {
   background-image: url('pictures/sep09_1_20.jpg');
-  margin: -8px;
-  height: 350px;
+  margin: 0;
+  height: 180px;
   box-shadow: 0 0 0 rgba(255, 255, 255, 1);
   transition: box-shadow 0.3s;
+  bottom: 0;
+  width: 100%;
 }
 
 .end:hover {
