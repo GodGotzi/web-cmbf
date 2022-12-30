@@ -48,7 +48,11 @@ pub fn get_language(language_value: &HeaderValue) -> &str {
     return match language_value.to_str() {
         Ok(str) => {
             let split_vec: Vec<&str> = str.split(",").collect();
-            let ret: &str = split_vec.get(1).unwrap();
+            let ret: &str = match split_vec.get(1) {
+                Some(val) => val,
+                None => "de"
+            };
+
             ret
         },
         Err(_) => "de"
