@@ -60,7 +60,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| App::new().route("/{filename:.*}", web::get().to(index)))
         .workers(40)
-        .bind(("192.168.5.108", 3000))? //172.20.10.2:3000
+        .bind(("localhost", 3000))? //172.20.10.2:3000
         .run()
         .await
 }
