@@ -35,7 +35,7 @@ async fn index(req: HttpRequest) -> Result<NamedFile> {
         },
         None => {
             log_info("Invalid Language", LogLevel::WARN);
-            "de"
+            "en"
         } 
     };
 
