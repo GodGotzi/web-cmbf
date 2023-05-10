@@ -47,7 +47,8 @@ pub fn starts_with_language(path: &str, languages: Vec<&str>) -> bool {
 pub fn get_language(language_value: &HeaderValue) -> &str {
     return match language_value.to_str() {
         Ok(str) => {
-            let split_vec: Vec<&str> = str.split(",").split("-").collect();
+			let split_vec_f: Vec<&str> = str.split(",").collect(); 
+            let split_vec: Vec<&str> = split_vec_f.get(1).split("-").collect();
             let ret: &str = match split_vec.get(0) {
                 Some(val) => val,
                 None => "de"
