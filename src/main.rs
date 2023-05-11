@@ -12,7 +12,7 @@ use actix_web::{web, App, HttpServer};
 use lazy_static::lazy_static;
 
 //#[allow(unused_imports)]
-//use openssl::ssl::{SslAcceptor, SslMethod, SslFiletype};
+use openssl::ssl::{SslAcceptor, SslMethod, SslFiletype};
 
 use crate::language::{get_language, get_path, LanguageProperties};
 use crate::properties::Properties;
@@ -50,17 +50,15 @@ async fn main() -> std::io::Result<()> {
     log_info("Starting Webserver...", LogLevel::INFO);
     log_info("Waiting for Requests", LogLevel::INFO);
 
-    /*
     let mut builder = SslAcceptor::mozilla_intermediate(SslMethod::tls()).unwrap();
     builder
         .set_private_key_file("key.pem", SslFiletype::PEM)
         .unwrap();
     builder.set_certificate_chain_file("cert.pem").unwrap();
-    */
 
     HttpServer::new(|| App::new().route("/{filename:.*}", web::get().to(index)))
         .workers(40)
-        .bind(("5.132.159.90", 80))?
+        .bind(("5.132.159.90", 80))? //172.20.10.2:3000
         .run()
         .await
 }
